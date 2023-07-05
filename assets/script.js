@@ -39,6 +39,7 @@ var correctAnswerElement = document.getElementById("correctAnswer");
 var yourScoreElement = document.getElementById("yourScore");
 var initialsElement = document.getElementById("initials");
 var highScoreElement = document.getElementById("highScore");
+var highScoreList = document.getElementById("highScoreList")
 
 var startButton = document.getElementById("startButton");
 startButton.addEventListener("click", startQuiz);
@@ -49,6 +50,16 @@ for (var i = 0; i < choiceButtons.length; i++) {
 
 var viewHighScores = document.getElementById("viewHighScores");
 viewHighScores.addEventListener("click",showHighScore);
+
+var submitScoreButton = document.getElementById("submitScore");
+submitScoreButton.addEventListener("click", function(event){
+    event.preventDefault();
+
+    var initials = initialsElement.value;
+    localStorage.setItem("initials", JSON.stringify(initials));
+
+    showHighScore();
+})
 
 function startQuiz() {
     startQuizContainer.style.display = "none";
@@ -97,4 +108,12 @@ function showHighScore() {
     questionsContainer.style.display = "none";
     scoreContainer.style.display = "none";
     highScoreContainer.style.display = "block";
+
+    var topScores = JSON.parse(localStorage.getItem("initials"));
+    var li = document.createElement("li");
+    li.textContent = topScores;
+    highScoreList.appendChild(li);
 }
+//i need to find a way to store the initials + the score (maybe as an object) and then retrieve them and show them as a list
+//missing buttons to go back and clear high scores
+//missing timer
