@@ -25,3 +25,17 @@ var quizData = [
         answer: 3
     }
 ];
+
+var currentQuestion = 0;
+var score = 0;
+
+var startQuizContainer = document.getElementById("startQuizContainer");
+var questionsContainer = document.getElementById("questionsContainer");
+var scoreContainer = document.getElementById("scoreContainer");
+var questionElement = document.getElementById("question");
+var choiceButtons = document.getElementsByClassName("choiceButton");
+var correctAnswerElement = document.getElementById("correctAnswer");
+var yourScoreElement = document.getElementById("yourScore");
+var initialsElement = document.getElementById("initials");
+var highScoreElement = document.getElementById("highScore");
+
