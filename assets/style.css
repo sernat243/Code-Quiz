@@ -1,0 +1,53 @@
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.button {
+    background-color: purple;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+#viewHighScores {
+    color: #c97cd8;
+}
+
+#viewHighScores:hover {
+    color:purple;
+    cursor: pointer;
+}
+
+#startQuizContainer {
+    text-align: center;
+    margin-top: 100px;
+}
+
+#instructions {
+    padding: 0 200px;
+}
+
+#questionsContainer {
+    display: none;
+    text-align: center;
+    margin-top: 100px;
+}
+
+#scoreContainer {
+    display: none;
+    text-align: center;
+    margin-top: 100px;
+}
+
+#correctAnswer {
+    margin-top: 20px;
+    font-weight: lighter;
+}
+
