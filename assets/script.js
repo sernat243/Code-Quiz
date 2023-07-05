@@ -39,3 +39,22 @@ var yourScoreElement = document.getElementById("yourScore");
 var initialsElement = document.getElementById("initials");
 var highScoreElement = document.getElementById("highScore");
 
+var startButton = document.getElementById("startButton");
+startButton.addEventListener("click", startQuiz);
+
+var viewHighScores = document.getElementById("viewHighScores");
+viewHighScores.addEventListener("click",showHighScore);
+
+function startQuiz() {
+    startQuizContainer.style.display = "none";
+    questionsContainer.style.display = "block";
+    showQuestion();
+}
+
+function showQuestion() {
+    var questionData = quizData[currentQuestion];
+    questionElement.innerText = questionData.question;
+    for (var i = 0; i < choiceButtons.length; i++) {
+        choiceButtons[i].innerText = questionData.choices[i];
+    }
+}
