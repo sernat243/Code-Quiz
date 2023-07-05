@@ -12,12 +12,29 @@
         <span id="timer"></span>
     </header>
 
-    <div class="container" id="startQuiz">
-        <h1 class="heading">Coding Quiz Challenge</h1>
+    <div class="container" id="startQuizContainer">
+        <h1 class="mainHeading">Coding Quiz Challenge</h1>
         <p>Try to answer the following code-related questions within the time limit.
             Keep in mind that incorrect answers will penalize your score/time by 10 seconds! 
         </p>
-        <button id="start">Start Quiz</button>
+        <button class="button" id="startButton">Start Quiz</button>
+    </div>
+    <div class="container" id="questionsContainer">
+        <h2 class="heading" id="questionsHeading"></h2>
+        <button class="button" id="answerButtonOne"></button>
+        <button class="button" id="answerButtonTwo"></button>
+        <button class="button" id="answerButtonThree"></button>
+        <button class="button" id="answerButtonFour"></button>
+        <p id="correctAnswer"></p>
+    </div>
+    <div class="container" id="scoreContainer">
+        <h2 class="heading" id="scoreHeading">All done!</h2>
+        <p id="yourScore"></p>
+        <label for="initials">Enter your initials:</label>
+        <input type="text" id="initials" maxlength="3">
+        <button class="button" id="submitScore">Submit</button>
+        <h3>High Score</h3>
+        <p id="highScore"></p>
     </div>
     <script src="assets/script.js"></script>
 </body>
