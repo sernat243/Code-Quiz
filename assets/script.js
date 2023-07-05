@@ -42,6 +42,10 @@ var highScoreElement = document.getElementById("highScore");
 var startButton = document.getElementById("startButton");
 startButton.addEventListener("click", startQuiz);
 
+for (var i = 0; choiceButtons.length; i++) {
+    choiceButtons[i].addEventListener("click", checkAnswer);
+}
+
 var viewHighScores = document.getElementById("viewHighScores");
 viewHighScores.addEventListener("click",showHighScore);
 
@@ -57,4 +61,30 @@ function showQuestion() {
     for (var i = 0; i < choiceButtons.length; i++) {
         choiceButtons[i].innerText = questionData.choices[i];
     }
+}
+
+
+function checkAnswer(event) {
+    var selectedChoice = event.target;
+    var selectedAnswer = Array.prototype.indexOf.call(choiceButtons, selectedChoice);
+    var questionData = quizData[currentQuestion];
+
+    if (selectedAnswer === questionData.answer) {
+        score++;
+        correctAnswerElement.innerText = "Correct!";
+    } else {
+        correctAnswerElement.innerText = "Wrong!";
+    }
+
+    currentQuestion++;
+
+    if (currentQuestion < quizData.length) {
+        showQuestion();
+    } else {
+        showScore();
+    }
+}
+
+function showScore() {
+    
 }
