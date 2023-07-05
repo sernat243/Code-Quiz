@@ -32,6 +32,7 @@ var score = 0;
 var startQuizContainer = document.getElementById("startQuizContainer");
 var questionsContainer = document.getElementById("questionsContainer");
 var scoreContainer = document.getElementById("scoreContainer");
+var highScoreContainer = document.getElementById("highScoreContainer");
 var questionElement = document.getElementById("question");
 var choiceButtons = document.getElementsByClassName("choiceButton");
 var correctAnswerElement = document.getElementById("correctAnswer");
@@ -42,7 +43,7 @@ var highScoreElement = document.getElementById("highScore");
 var startButton = document.getElementById("startButton");
 startButton.addEventListener("click", startQuiz);
 
-for (var i = 0; choiceButtons.length; i++) {
+for (var i = 0; i < choiceButtons.length; i++) {
     choiceButtons[i].addEventListener("click", checkAnswer);
 }
 
@@ -86,5 +87,14 @@ function checkAnswer(event) {
 }
 
 function showScore() {
-    
+    questionsContainer.style.display = "none";
+    scoreContainer.style.display = "block";
+    yourScoreElement.innerText = "Your Score: " + score;
+}
+
+function showHighScore() {
+    startQuizContainer.style.display = "none";
+    questionsContainer.style.display = "none";
+    scoreContainer.style.display = "none";
+    highScoreContainer.style.display = "block";
 }
