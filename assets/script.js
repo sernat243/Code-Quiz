@@ -46,6 +46,15 @@ var scoresArray = [];
 var startButton = document.getElementById("startButton");
 startButton.addEventListener("click", startQuiz);
 
+var startAgainButton = document.getElementById("startAgain");
+startAgainButton.addEventListener("click", startAgain);
+
+var clearHighScoreButton = document.getElementById("clearHighScore");
+clearHighScoreButton.addEventListener("click", function(){
+    highScoreList.innerHTML = "";
+    localStorage.removeItem('initials');
+})
+
 for (var i = 0; i < choiceButtons.length; i++) {
     choiceButtons[i].addEventListener("click", checkAnswer);
 }
@@ -73,14 +82,17 @@ submitScoreButton.addEventListener("click", function(event){
     localStorage.setItem("initials", JSON.stringify(scoresArray));
     console.log(scoresArray);
 
-    //initialsElement.value = '';
+    initialsElement.value = '';
 
     showHighScore();
 })
 
 function startQuiz() {
+    scoresArray = [];
     startQuizContainer.style.display = "none";
     questionsContainer.style.display = "block";
+    currentQuestion = 0;
+    score = 0;
     showQuestion();
 }
 
@@ -139,6 +151,14 @@ function showHighScore() {
     }
 
     highScoreContainer.style.display = "block";
+}
+
+function startAgain() {
+    highScoreContainer.style.display = "none";
+    startQuizContainer.style.display = "block";
+    scoresArray = [];
+    currentQuestion = 0;
+    score = 0;
 }
 
 
