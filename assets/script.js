@@ -28,7 +28,7 @@ const quizData = [
   
   let currentQuestion = 0;
   let score = 0;
-  var timeLeft = 60;
+  let timeLeft = 60;
   
   const startQuizContainer = document.getElementById("startQuizContainer");
   const questionsContainer = document.getElementById("questionsContainer");
@@ -121,6 +121,7 @@ const quizData = [
     questionsContainer.style.display = "none";
     scoreContainer.style.display = "block";
     yourScoreElement.textContent = "Your Score: " + score;
+    timeLeft = '';
   }
   
   function showHighScore() {
@@ -146,8 +147,8 @@ const quizData = [
     startQuizContainer.style.display = "block";
     currentQuestion = 0;
     score = 0;
-    // Reset timer
-    // ... timer reset logic here ...
+    timeLeft = 60;
+    correctAnswerElement.innerHTML = "";
   }
   
   function clearHighScores() {
