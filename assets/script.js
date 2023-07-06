@@ -28,6 +28,7 @@ const quizData = [
   
   let currentQuestion = 0;
   let score = 0;
+  var timeLeft = 60;
   
   const startQuizContainer = document.getElementById("startQuizContainer");
   const questionsContainer = document.getElementById("questionsContainer");
@@ -61,6 +62,21 @@ const quizData = [
   const submitScoreButton = document.getElementById("submitScore");
   submitScoreButton.addEventListener("click", submitScore);
   
+  function startTimer() {
+    var timerElement = document.getElementById("timer");
+    timerElement.textContent = timeLeft;
+
+    var countdown = setInterval(function() {
+        timeLeft--;
+        timerElement.textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+            clearInterval(countdown);
+            showScore();
+        }
+    }, 1000);
+}
+
   function startQuiz() {
     scoresArray.length = 0;
     startQuizContainer.style.display = "none";
@@ -68,6 +84,7 @@ const quizData = [
     currentQuestion = 0;
     score = 0;
     showQuestion();
+    startTimer();
   }
   
   function showQuestion() {
@@ -88,8 +105,7 @@ const quizData = [
       correctAnswerElement.textContent = "Correct!";
     } else {
       correctAnswerElement.textContent = "Wrong!";
-      // Subtract 10 seconds from timer
-      // ... timer logic here ...
+      timeLeft -= 10;
     }
   
     currentQuestion++;
@@ -138,7 +154,7 @@ const quizData = [
     highScoreList.innerHTML = "";
     localStorage.removeItem("initials");
   }
-  
+
   function submitScore(event) {
     event.preventDefault();
   
