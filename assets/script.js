@@ -68,7 +68,7 @@ const quizData = [
 
     var countdown = setInterval(function() {
         timeLeft--;
-        timerElement.textContent = timeLeft;
+        timerElement.textContent = 'Time: ' + timeLeft;
 
         if (timeLeft <= 0) {
             clearInterval(countdown);

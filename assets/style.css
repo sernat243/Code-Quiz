@@ -20,6 +20,10 @@
     background-color: #c97cd8;
   }
 
+  .container {
+    text-align: center;
+  }
+
 .choiceButton {
     background-color: rgb(54, 11, 155);
     border: none;
@@ -29,11 +33,11 @@
     text-decoration: none;
     display: block;
     font-size: 16px;
-    margin: 8px 2px;
+    margin: 8px auto;
     cursor: pointer;
     border-radius: 5px;
-    position: relative;
-    left: 105px;
+    width: 50%;
+    max-width: 400px;
 }
 
 .choiceButton:hover {
@@ -86,3 +90,25 @@
     margin-top: 100px;
 }
 
+#timer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+  }
+  
+  #highScoreList {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #highScoreList li {
+    background-color: #f2e6ff;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 80%;
+    max-width: 400px;
+  }
