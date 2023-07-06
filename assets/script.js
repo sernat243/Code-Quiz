@@ -55,8 +55,15 @@ var submitScoreButton = document.getElementById("submitScore");
 submitScoreButton.addEventListener("click", function(event){
     event.preventDefault();
 
-    var initials = initialsElement.value;
-    localStorage.setItem("initials", JSON.stringify(initials));
+    var input = initialsElement.value;
+    
+    var initialsObject = {
+        input: input,
+        score: score
+    }
+
+    localStorage.setItem("initials", JSON.stringify(initialsObject));
+    console.log(initialsObject);
 
     showHighScore();
 })
@@ -109,11 +116,18 @@ function showHighScore() {
     scoreContainer.style.display = "none";
     highScoreContainer.style.display = "block";
 
-    var topScores = JSON.parse(localStorage.getItem("initials"));
+    var retrievedInitialsString = localStorage.getItem("initials");
+    var retrievedInitials = JSON.parse(retrievedInitialsString);
+
+    var input = retrievedInitials.input;
+    var score = retrievedInitials.score;
+
     var li = document.createElement("li");
-    li.textContent = topScores;
+    li.textContent = input + ': ' + score;
     highScoreList.appendChild(li);
 }
+
+
 //i need to find a way to store the initials + the score (maybe as an object) and then retrieve them and show them as a list
 //missing buttons to go back and clear high scores
 //missing timer
