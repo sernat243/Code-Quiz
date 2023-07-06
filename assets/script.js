@@ -41,6 +41,8 @@ var initialsElement = document.getElementById("initials");
 var highScoreElement = document.getElementById("highScore");
 var highScoreList = document.getElementById("highScoreList")
 
+var scoresArray = [];
+
 var startButton = document.getElementById("startButton");
 startButton.addEventListener("click", startQuiz);
 
@@ -55,15 +57,23 @@ var submitScoreButton = document.getElementById("submitScore");
 submitScoreButton.addEventListener("click", function(event){
     event.preventDefault();
 
+    var storedScores = JSON.parse(localStorage.getItem("initials"));
+
     var input = initialsElement.value;
-    
-    var initialsObject = {
+
+    var scoreObject = {
         input: input,
         score: score
-    }
+    };
 
-    localStorage.setItem("initials", JSON.stringify(initialsObject));
-    console.log(initialsObject);
+    scoresArray = scoresArray.concat(storedScores);
+    scoresArray.push(scoreObject);
+
+
+    localStorage.setItem("initials", JSON.stringify(scoresArray));
+    console.log(scoresArray);
+
+    //initialsElement.value = '';
 
     showHighScore();
 })
@@ -114,17 +124,21 @@ function showHighScore() {
     startQuizContainer.style.display = "none";
     questionsContainer.style.display = "none";
     scoreContainer.style.display = "none";
+
+    var storedScores = JSON.parse(localStorage.getItem('initials')) || [];
+    highScoreList.innerHTML = '';
+
+    for (var i = 0; i < storedScores.length; i++) {
+        var scoreObject = storedScores[i];
+
+        if (scoreObject && scoreObject.input && scoreObject.score) {
+            var li = document.createElement("li");
+            li.textContent = scoreObject.input + ': ' + scoreObject.score;
+            highScoreList.appendChild(li);
+        }
+    }
+
     highScoreContainer.style.display = "block";
-
-    var retrievedInitialsString = localStorage.getItem("initials");
-    var retrievedInitials = JSON.parse(retrievedInitialsString);
-
-    var input = retrievedInitials.input;
-    var score = retrievedInitials.score;
-
-    var li = document.createElement("li");
-    li.textContent = input + ': ' + score;
-    highScoreList.appendChild(li);
 }
 
 
